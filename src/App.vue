@@ -1,7 +1,7 @@
 <template>
-  <div flex flex-col>
+  <div flex flex-col items-center>
+    <span font-700 text-size-3xl mb-2>{{ number }}</span>
     <button @click="numberGoUp">Number go up</button>
-    {{ number }}
   </div>
 </template>
 
