@@ -1,17 +1,17 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
-import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite';
+import vue from '@vitejs/plugin-vue';
+import UnoCSS from 'unocss/vite';
 
 export default defineConfig({
     plugins: [
-    vue(),
+        vue(),
         laravel({
             input: ['src/main.ts'],
             refresh: true,
         }),
-        tailwindcss(),
+        UnoCSS(),
     ],
     server: {
         watch: {
