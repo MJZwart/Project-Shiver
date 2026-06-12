@@ -14,7 +14,8 @@
     "dependencies": {
         "axios": "^1.17.0",
         "unocss": "^66.7.0",
-        "vue": "^3.5.32"
+        "vue": "^3.5.32",
+        "vue-router": "^5.1.0"
     },
     "devDependencies": {
         "@laravel/echo-vue": "^2.3.7",
