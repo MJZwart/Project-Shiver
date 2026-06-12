@@ -12,7 +12,7 @@ class BaseController extends Controller
     {
         DB::table('number')->whereNotNull('number')->increment('number');
         $number = DB::table('number')->first();
-        // Could do "->toOthers()" to only send to others, as the new value is already sent back.
+        // Could do "broadcast(new NumberUpdates($number->number))->toOthers()" to only send to others, as the new value is already sent back.
         NumberUpdated::dispatch($number->number);
         return $number;
     }
