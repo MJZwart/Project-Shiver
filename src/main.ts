@@ -7,6 +7,11 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router/router.ts';
 
+import axios from 'axios';
+// @ts-ignore
+window.axios = axios;
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 const app = createApp(App);
 
 app.use(router);
