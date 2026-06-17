@@ -49,7 +49,7 @@ class AuthController extends Controller
         $user = Auth::user();
 
         if (!$user) {
-            return new JsonResponse(['error' => 'Not logged in'], Response::HTTP_UNPROCESSABLE_ENTITY);
+            return new JsonResponse(['error' => 'Not logged in'], Response::HTTP_UNAUTHORIZED);
         }
         return new UserResource($user);
     }
