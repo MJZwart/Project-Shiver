@@ -26,8 +26,6 @@ class AuthController extends Controller
         Auth::login($newUser);
         $request->session()->regenerate();
 
-        // Then in the frontend use this to show that the user is logged in (in router and stuff).
-        // Also test that this actually logs the user in properly.
         return new UserResource($newUser);
     }
 
@@ -43,7 +41,16 @@ class AuthController extends Controller
             return new UserResource($user);
         }
 
-        // Create error
         return new JsonResponse(['error' => 'Wrong credentials'], Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    public function me()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return new JsonResponse(['error' => 'Not logged in'], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        return new UserResource($user);
     }
 }
