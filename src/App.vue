@@ -13,9 +13,4 @@ import { me } from './auth/auth.ts';
 onBeforeMount(() => {
   me()
 });
-
-// TODO Made a /me that calls whenever you reload on onMounted or something to check if the user is logged in and if so, send it.
-// Then test all the usual suspects, 
-// Create a logout button as well
-
 </script>
