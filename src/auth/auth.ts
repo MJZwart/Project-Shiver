@@ -27,3 +27,9 @@ export const me = async() => {
     // TODO This does not redirect to where you were going, instead sends you to the login screen due to router shenanigans
     // Find a way to redirect to where you were trying to go when this happens
 }
+
+export const logout = async () => {
+    await axios.get('/api/logout');
+    user.value = undefined;
+    // Redirect to wherever the landing page for logged out users should be
+}
