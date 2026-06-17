@@ -17,13 +17,13 @@
         </label>
         <input id="password-confirmation" type="password" v-model="credentials.password_confirmation" />
 
-        <button @click="createNewAccount">Register</button>
+        <button @click="submitRegister">Register</button>
     </div>
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
 import { ref } from 'vue';
+import { register } from './auth';
 
 const createNewCredentials = () => {
     return {
@@ -35,8 +35,7 @@ const createNewCredentials = () => {
 
 const credentials = ref(createNewCredentials());
 
-const createNewAccount = async () => {
-    const { data } = await axios.post('/api/register', credentials.value);
-    console.log(data);
+const submitRegister = async () => {
+    register(credentials.value);
 }
 </script>

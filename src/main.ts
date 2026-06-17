@@ -7,6 +7,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router/router.ts';
 
+// TODO Test if this is necessary
+
 import axios from 'axios';
 // @ts-ignore
 window.axios = axios;
