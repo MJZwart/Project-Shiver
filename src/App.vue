@@ -10,7 +10,7 @@ import { onMounted } from 'vue';
 import NavBar from './components/NavBar.vue';
 import { me } from './auth/auth.ts';
 
-onMounted(async () => {
-  await me();
+onMounted(() => {
+  me();
 });
 </script>
