@@ -1,5 +1,5 @@
 <template>
-    <div flex flex-col items-center>
+    <form @submit.prevent="submitLogin" flex flex-col items-center>
         <h3>Login</h3>
 
         <label for="username">
@@ -12,8 +12,8 @@
         </label>
         <input id="password" type="password" v-model="credentials.password" />
 
-        <button @click="submitLogin">Login</button>
-    </div>
+        <button type="submit">Login</button>
+    </form>
 </template>
 
 <script setup lang="ts">

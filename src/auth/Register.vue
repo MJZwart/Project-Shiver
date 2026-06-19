@@ -1,5 +1,5 @@
 <template>
-    <div flex flex-col items-center>
+    <form flex flex-col items-center @submit.prevent="submitRegister">
         <h3>Register new account</h3>
 
         <label for="username">
@@ -17,8 +17,8 @@
         </label>
         <input id="password-confirmation" type="password" v-model="credentials.password_confirmation" />
 
-        <button @click="submitRegister">Register</button>
-    </div>
+        <button type="submit">Register</button>
+    </form>
 </template>
 
 <script setup lang="ts">
