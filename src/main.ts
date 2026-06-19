@@ -1,7 +1,7 @@
-// TODO Figure out why my VSCode is complaining about these imports
 import './assets/main.css';
 import './websockets.ts';
 import 'uno.css';
+import './http.ts';
 
 import { createApp } from 'vue';
 import App from './App.vue';

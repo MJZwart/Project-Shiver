@@ -1,6 +1,6 @@
 import { computed, ref } from "vue";
 import type { User, Credentials, NewUserCredentials } from "./types";
-import axios from "axios";
+import {http} from "../http";
 import router from "../router/router";
 
 const user = ref<User | undefined>();
@@ -10,26 +10,26 @@ export const isLoggedIn = computed(() => {
 });
 
 export const login = async (credentials: Credentials) => {
-    const { data } = await axios.post('/api/login', credentials);
+    const { data } = await http.post('/api/login', credentials);
     user.value = data.data;
-    router.push('/hidden'); // TODO Redirect to dashboard
+    router.push('/hidden'); // TODO Redirect to dashboard (#18)
 }
 
 export const register = async (credentials: NewUserCredentials) => {
-    const { data } = await axios.post('/api/register', credentials);
+    const { data } = await http.post('/api/register', credentials);
     user.value = data.data;
-    router.push('/hidden'); // TODO Redirect to dashboard
+    router.push('/hidden'); // TODO Redirect to dashboard (#18)
 }
 
 export const me = async() => {
-    const {data} = await axios.get('/api/me');
+    const {data} = await http.get('/api/me');
     user.value = data.data;
-    // TODO This does not redirect to where you were going, instead sends you to the login screen due to router shenanigans
-    // Find a way to redirect to where you were trying to go when this happens
+    if (router.currentRoute.value.redirectedFrom) router.push(router.currentRoute.value.redirectedFrom);
 }
 
 export const logout = async () => {
-    await axios.get('/api/logout');
+    await http.get('/api/logout');
     user.value = undefined;
-    // Redirect to wherever the landing page for logged out users should be
+    router.push('/login');
+    // TODO Redirect to wherever the landing page for logged out users should be (#18)
 }
