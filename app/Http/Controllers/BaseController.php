@@ -11,7 +11,6 @@ class BaseController extends Controller
 {
     public function up(Request $request)
     {
-        dd(Auth::user());
         DB::table('number')->whereNotNull('number')->increment('number');
         $number = DB::table('number')->first();
         // Could do "broadcast(new NumberUpdates($number->number))->toOthers()" to only send to others, as the new value is already sent back.

@@ -3,16 +3,20 @@ import {routes} from './routes';
 import { isLoggedIn } from "../auth/auth";
 
 const router = createRouter({
-    history: createWebHistory(), // Choices??
+    history: createWebHistory(),
     routes
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
     if (to.meta.auth && !isLoggedIn.value) {
-        return next({path: '/login'});
+        return {
+            path: '/login',
+            query: {
+                redirectedFrom: to.fullPath,
+            },
+        }
     }
-// TODO Console says this is deprecated, to just return the value, just not sure what this value is.
-    return next();
+    return true;
 });
 
 export default router;

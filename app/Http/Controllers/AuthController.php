@@ -22,7 +22,6 @@ class AuthController extends Controller
         $newUser->password = bcrypt($credentials['password']);
         $newUser->save();
 
-        // Automatic login ???
         Auth::login($newUser);
         $request->session()->regenerate();
 
