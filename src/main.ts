@@ -1,8 +1,14 @@
 import './assets/main.css';
 import './websockets.ts';
 import 'uno.css';
+import './http.ts';
 
 import { createApp } from 'vue';
 import App from './App.vue';
+import router from './router/router.ts';
 
-createApp(App).mount('#app');
+const app = createApp(App);
+
+app.use(router);
+
+app.mount('#app');
