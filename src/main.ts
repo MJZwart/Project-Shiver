@@ -1,4 +1,5 @@
 import './assets/main.css';
+import './assets/win.css';
 import './websockets.ts';
 import 'uno.css';
 import './http.ts';
