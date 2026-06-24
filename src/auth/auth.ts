@@ -8,6 +8,9 @@ const user = ref<User | undefined>();
 export const isLoggedIn = computed(() => {
     return user.value !== undefined;
 });
+export const getUser = computed(() => {
+    return user.value;
+})
 
 export const login = async (credentials: Credentials) => {
     const { data } = await http.post('/api/login', credentials);
