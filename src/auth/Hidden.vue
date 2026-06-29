@@ -1,5 +1,4 @@
 <template>
-    {{ pawsShown }}
     <PokeAnimation v-for="paw in pawsShown" :username="paw" />
     <div flex flex-col items-center>
         Hidden until logged in. Can delete this file when any other page is created.
@@ -30,7 +29,7 @@ useEcho(
         pawsShown.value.push(e.username);
         setTimeout(() => {
             pawsShown.value.pop();
-        }, 1500)
+        }, 2500)
     });
 
 onMounted(async () => {
