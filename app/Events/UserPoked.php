@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class UserPoked implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-// TODO Find out if user is needed here, or otherwise don't send the user each time
+
     /**
      * Create a new event instance.
      */
@@ -33,6 +33,11 @@ class UserPoked implements ShouldBroadcast
         ];
     }
 
+    /**
+     * Get the data the event should send.
+     *
+     * @return array<string, string>
+     */
     public function broadcastWith(): array
     {
         return [
