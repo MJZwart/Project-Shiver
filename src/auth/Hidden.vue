@@ -2,10 +2,8 @@
     <PokeAnimation v-for="paw in pawsShown" :username="paw" />
     <div flex flex-col items-center>
         Hidden until logged in. Can delete this file when any other page is created.
-        <div>
-            <div v-for="user in activeUsers">
-                {{ user.username }} <button @click="pokeUser(user.id)">Poke</button>
-            </div>
+        <div v-for="user in activeUsers">
+            {{ user.username }} <button @click="pokeUser(user.id)">Poke</button>
         </div>
     </div>
 </template>
@@ -20,6 +18,11 @@ import { http } from '../http.ts';
 
 const activeUsers = ref<User[]>([]);
 
+/* 
+    NOTE: Currently the paws are only visible on this page, if you navigate away you will no longer see them or be listening to the channel.
+    For future websocket shenanigans we want it to be visible everywhere, so this type of listening should be on a top-level component
+    Eg: navigation, App.vue, or custom component added to App.vue.
+*/
 const pawsShown = ref<string[]>([]);
 
 useEcho(
