@@ -15,8 +15,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/up', [BaseController::class, 'up']);
 });
 
-// TODO make auth middleware (#21)
-Route::group(['middleware' => ['web']], function() {
+Route::group(['middleware' => ['auth']], function() {
     Route::controller(PokeController::class)->group(function() {
         Route::get('/users', 'getUsers');
         Route::post('/poke/{user}', 'pokeUser');
