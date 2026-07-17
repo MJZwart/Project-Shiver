@@ -15,7 +15,7 @@
     </div>
     <div fixed bottom-0 w-full flex>
         <div>ey kom skype</div>
-        <SelfDestructingMarquee v-for="item in listRenderTest" :item="item" @done="kaboom(item)"/>
+        <SelfDestructingMarquee v-for="item in listRenderTest" :item="item" @done="kaboom(item)" :key="item.id"/>
     </div>
 </template>
 
