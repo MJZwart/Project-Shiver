@@ -8,6 +8,9 @@ const user = ref<User | undefined>();
 export const isLoggedIn = computed(() => {
     return user.value !== undefined;
 });
+export const getUser = computed(() => {
+    return user.value;
+})
 
 export const unsetUser = () => {
     user.value = undefined;
