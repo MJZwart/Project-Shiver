@@ -3,14 +3,14 @@
   <div>
     <router-view />
   </div>
-  <ShitpostFooter />
+  <ErrorFooter />
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import NavBar from './components/NavBar.vue';
 import { me } from './auth/auth.ts';
-import ShitpostFooter from './components/ShitpostFooter.vue';
+import ErrorFooter from './components/errors/ErrorFooter.vue';
 
 onMounted(() => {
   me();

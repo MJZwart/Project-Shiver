@@ -1,15 +1,18 @@
 <template>
-    <div class="anim" :style="{bottom: height}" ref="marQueezNutz">
-        {{item}}
+    <div class="anim" :style="{bottom: height, animationDuration: duration}" ref="marQueezNutz">
+        {{item.msg}}
     </div>
 </template>
 
 <script setup>
 import { computed, onMounted, useTemplateRef } from 'vue';
 
+
     const {item} = defineProps(['item']);
 
     const height = computed(() => `${item.yVal}vh`)
+
+    const duration = computed(() => `${item.speed}s`)
 
     const marQueezNutz = useTemplateRef('marQueezNutz');
 
@@ -27,10 +30,10 @@ import { computed, onMounted, useTemplateRef } from 'vue';
 
     .anim {
         position: absolute;
-        animation: 10s linear 0s xdd;
+        animation: 10s linear 0s leftToRight;
     }
 
-    @keyframes xdd {
+    @keyframes leftToRight {
         from {
             transform: translateX(-100%);
         }

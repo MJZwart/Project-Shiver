@@ -2,7 +2,6 @@
     <div flex flex-col items-center>
         <span font-700 text-size-3xl mb-2>{{ number }}</span>
         <button @click="numberGoUp">Number go up</button>
-        <ErrorButton />
     </div>
 </template>
 
@@ -10,7 +9,6 @@
 import { useEchoPublic } from '@laravel/echo-vue';
 import { http } from '../http';
 import { ref } from 'vue';
-import ErrorButton from './ErrorButton.vue';
 
 // Important to note the number only updates after clicking or after a websocket event. Not important for testing.
 const number = ref(1);
