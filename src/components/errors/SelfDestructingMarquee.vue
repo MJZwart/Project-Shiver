@@ -22,7 +22,6 @@ import { computed, onMounted, useTemplateRef } from 'vue';
         marQueezNutz.value.addEventListener("animationend", (_) => {
             emit('done');
         })
-        console.log(item);
     })
 </script>
 
