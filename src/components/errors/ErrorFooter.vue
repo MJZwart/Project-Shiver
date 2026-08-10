@@ -22,7 +22,7 @@ const kaboom = (item: marqueeErrorMessage) => {
     if (movingErrorList.value[item.id]) {
         delete movingErrorList.value[item.id];
     } else {
-        console.log('sorry m8 its fukd');
+        console.log('Item not found in error list, please check the state of the list: ', movingErrorList.value);
     }
 }
 
