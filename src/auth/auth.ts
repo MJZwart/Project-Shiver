@@ -12,6 +12,10 @@ export const getUser = computed(() => {
     return user.value;
 })
 
+export const unsetUser = () => {
+    user.value = undefined;
+}
+
 export const login = async (credentials: Credentials) => {
     const { data } = await http.post('/api/login', credentials);
     user.value = data.data;
@@ -32,7 +36,7 @@ export const me = async() => {
 
 export const logout = async () => {
     await http.get('/api/logout');
-    user.value = undefined;
+    unsetUser();
     router.push('/login');
     // TODO Redirect to wherever the landing page for logged out users should be (#18)
 }
