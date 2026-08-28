@@ -6,9 +6,11 @@ export default defineConfig({
         // 
     },
     theme: {
-        // colors: {
-        //     highlight: '#646cff',
-        // }
+        colors: {
+            red: '#FF4281',
+            green: '#00bd7e',
+            // highlight: '#646cff',
+        }
     },
     // Necessary for the dynamic classes
     safelist: [
