@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, useTemplateRef } from 'vue';
 
 
@@ -19,6 +19,7 @@ import { computed, onMounted, useTemplateRef } from 'vue';
     const emit = defineEmits(['done'])
 
     onMounted(() => {
+        // TODO: Needs a more robust solution. Maybe a watcher? At least something that ensures the event is added.
         marQueezNutz.value.addEventListener("animationend", (_) => {
             emit('done');
         })
