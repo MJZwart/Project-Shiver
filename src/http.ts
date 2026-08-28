@@ -4,7 +4,15 @@ import { ref } from "vue"
 
 export const http = axios.create({
     // Any settings needed?
-})
+});
+
+http.interceptors.request.use(
+    function (config) {
+        errorBag.value = {};
+
+        return config;
+    }
+)
 
 http.interceptors.response.use(
     function (response) {
