@@ -8,7 +8,7 @@ export const http = axios.create({
 
 http.interceptors.request.use(
     function (config) {
-        errorBag.value = {};
+        emptyErrorBag();
 
         return config;
     }
@@ -41,3 +41,7 @@ type httpError = {
 
 // Maybe-todo?: Currently, a separate errorMessagesBag seems superfluous, any additional formatting for messages can be done in the error message container itself
 export const errorBag = ref<httpError>({})
+
+export const emptyErrorBag = () => {
+    errorBag.value = {};
+}
