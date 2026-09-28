@@ -6,6 +6,7 @@ use App\Http\Requests\CreateNewAccountRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Services\CreateUserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,14 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(CreateNewAccountRequest $request)
+    public function register(CreateNewAccountRequest $request, CreateUserService $service)
     {
         $credentials = $request->validated();
 
-        $newUser = new User();
-        $newUser->username = $credentials['username'];
-        $newUser->password = bcrypt($credentials['password']);
-        $newUser->save();
+        $newUser = $service->createNewUser($credentials);
 
         Auth::login($newUser);
         $request->session()->regenerate();

@@ -1,12 +1,12 @@
 import Hidden from "../auth/Hidden.vue";
 import Login from "../auth/Login.vue";
 import Register from "../auth/Register.vue";
-import NumberGoUp from "../components/NumberGoUp.vue";
+import Stonks from "../pages/Stonks.vue";
 
 export const routes = [
     {
         path: '/',
-        component: NumberGoUp,
+        component: Stonks,
     },
     {
         path: '/register',

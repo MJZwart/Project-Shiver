@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PokeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::controller(PokeController::class)->group(function() {
         Route::get('/users', 'getUsers');
         Route::post('/poke/{user}', 'pokeUser');
+    });
+
+    Route::controller(PlayerController::class)->prefix('player')->group(function() {
+        Route::get('/me', 'me');
+        Route::post('/hax', 'payToWin');
+        Route::post('/gain', 'gainEnergy');
+        Route::post('/spend', 'spendEnergy');
+
     });
 });

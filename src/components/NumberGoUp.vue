@@ -2,6 +2,7 @@
     <div flex flex-col items-center>
         <span font-700 text-size-3xl mb-2>{{ number }}</span>
         <button @click="numberGoUp">Number go up</button>
+
     </div>
 </template>
 
@@ -17,6 +18,7 @@ const numberGoUp = async () => {
     const { data } = await http.post('/api/up');
     number.value = data.number;
 }
+
 // Automatically connects to public channel 'number' and updates the number when anyone triggers the event.
 useEchoPublic(
     'number',
