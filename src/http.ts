@@ -4,7 +4,15 @@ import { ref } from "vue"
 
 export const http = axios.create({
     // Any settings needed?
-})
+});
+
+http.interceptors.request.use(
+    function (config) {
+        emptyErrorBag();
+
+        return config;
+    }
+)
 
 http.interceptors.response.use(
     function (response) {
@@ -33,3 +41,7 @@ type httpError = {
 
 // Maybe-todo?: Currently, a separate errorMessagesBag seems superfluous, any additional formatting for messages can be done in the error message container itself
 export const errorBag = ref<httpError>({})
+
+export const emptyErrorBag = () => {
+    errorBag.value = {};
+}

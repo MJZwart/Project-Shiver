@@ -1,7 +1,7 @@
 <template>
     <div>
         <slot />
-        <div v-for="message in httpError">{{message}}</div>
+        <div v-for="message in httpError" c-red>{{ message }}</div>
     </div>
 </template>
 
@@ -9,13 +9,13 @@
 import { computed } from 'vue';
 import { errorBag } from '../../http';
 
-    const {formComponent} = defineProps<{
-        formComponent: string
-    }>()
+const { formComponent } = defineProps<{
+    formComponent: string
+}>()
 
-    const httpError = computed(() => {
-        if (!errorBag.value) return;
+const httpError = computed(() => {
+    if (!errorBag.value) return;
 
-        return errorBag.value[formComponent] ?? ''
-    })
+    return errorBag.value[formComponent] ?? ''
+})
 </script>
